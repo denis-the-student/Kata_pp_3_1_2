@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<h1>Хуманы</h1>
+<br>
+<form th:method="GET" th:action="@{/new}">
+  <input type="submit" value="Создание нового хумана"/>
+</form>
+<br>
+<br>
+<form th:method="POST" th:action="@{/create10users}">
+  <input type="submit" value="Создать 10 тестовых хуманов"/>
+</form>
+<br>
+<br>
+
+<div>
+  <table th:border="1" th:cellpadding="10">
+
+    <tr>
+      <th>id</th>
+      <th>Имя</th>
+      <th>Возраст</th>
+      <th>email</th>
+    </tr>
+
+    <tr th:each="user : ${users}">
+      <td th:utext="${user.getId}">user_id</td>
+      <td><a th:href="@{/{id}(id=${user.getId()})}"
+             th:text="${user.getName()}">user_name</a></td>
+      <td th:utext="${user.getAge}">user_age</td>
+      <td th:utext="${user.getEmail}">user_email</td>
+      <td><form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
+        <input type="submit" value="Удалить"/>
+      </form></td>
+    </tr>
+
+  </table>
+</div>
+
+</body>
+</html>

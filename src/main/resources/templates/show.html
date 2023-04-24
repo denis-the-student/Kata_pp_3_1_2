@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${user.getName()}">Value</title>
+</head>
+<body>
+
+<h1 th:text="${user.getName}">user_name</h1>
+
+<div>
+  <table th:border="1" th:cellpadding="10">
+
+    <tr>
+        <th>id</th>
+        <th>Имя</th>
+        <th>Возраст</th>
+        <th>email</th>
+    </tr>
+
+    <tr>
+        <td th:utext="${user.getId}">VALUE</td>
+        <td th:utext="${user.getName}">VALUE</td>
+        <td th:utext="${user.getAge}">VALUE</td>
+        <td th:utext="${user.getEmail}">VALUE</td>
+    </tr>
+
+  </table>
+</div>
+
+<br>
+<br>
+
+<form th:method="GET" th:action="@{/{id}/edit(id=${user.getId()})}">
+    <input type="submit" value="Изменить"/>
+</form>
+
+<br>
+<br>
+
+<form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
+  <input type="submit" value="Удалить"/>
+</form>
+
+<br>
+<br>
+
+<a href="/">к списку</a>
+
+</body>
+</html>
